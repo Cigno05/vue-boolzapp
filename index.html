@@ -192,7 +192,7 @@
 
 
             <ul class="flex flex-c">
-              <li v-for="(contactProp, i) in contacts[currentChatIndex].messages" class="col flex flex-c">
+              <li v-for="(contactProp, i) in contacts[currentChatIndex].messages" class="col flex flex-c" :class="contactProp.status">
                 <h3>{{ contactProp.message }}</h3>
                 <h5>19:13</h5>
               </li>

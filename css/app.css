@@ -453,6 +453,9 @@ main {
     height: calc(100% - 160px);
     background-image: url(../img/mine.jpg);
     overflow-y: auto;
+    
+    flex-grow: 1;
+   
 }
 
 .main__body ul {
@@ -467,13 +470,13 @@ main {
     
 }
 
-.message-sent + .message-sent,
-.message-recived + .message-recived {
+.sent + .sent,
+.received + .received {
     margin-top: 5px;
 }
 
-.message-sent + .message-recived,
-.message-recived + .message-sent {
+.sent + .received,
+.received + .sent {
     margin-top: 30px;
 }
 
@@ -482,12 +485,12 @@ main {
     color: var(--medium-gray);
 }
 
-.main__body .message-sent {
+.main__body .sent {
     background-color: #D5FABA;
     align-self: flex-end;
 }
 
-.main__body .message-recived {
+.main__body .received {
     background-color: white;
 }
 
