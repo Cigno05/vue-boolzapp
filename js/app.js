@@ -171,12 +171,33 @@ const { createApp } = Vue
       return {
         contacts: contacts,
         currentChatIndex: 0,
+        inputMessage:'',
+        
       }
     },
     methods: {
       viewCurrentChat(index) {
         this.currentChatIndex = index
         console.log(index)
+      },
+      selectInToTheString(string, start, end) {
+
+        const stringSelect = [];
+      
+        for (index = start; index < end; index++) {
+          const selected = string[index]
+          stringSelect.push(selected)
+        }
+        return stringSelect.join('')
+      },
+      sendNewMessage() {
+        let newMessage = {
+          message: this.inputMessage,
+          status: 'sent'
+        }
+        this.contacts.messages.push(newMessage);
+        this.inputMessage = '';
+
       }
     },
     
