@@ -169,11 +169,15 @@ const { createApp } = Vue
   createApp({
     data() {
       return {
-        contacts: contacts
+        contacts: contacts,
+        currentChatIndex: 0,
       }
     },
     methods: {
-
+      viewCurrentChat(index) {
+        this.currentChatIndex = index
+        console.log(index)
+      }
     },
     
   }).mount('#app')

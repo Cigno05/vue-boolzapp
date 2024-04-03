@@ -335,6 +335,10 @@ img{
 
 }
 
+.contact__card.active {
+    background-color: rgb(212, 212, 212);
+    color: black;
+}
 
 .contact__photo img {
    
@@ -405,6 +409,10 @@ main {
     border-bottom: 2px solid var(--light-gray);
     padding: 12px;
 
+}
+
+.chat__card.active{
+    display: flex;
 }
 
 .chat__name h3 {
