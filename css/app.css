@@ -136,6 +136,9 @@ img{
     margin: 0;
 }
 
+.container-lg {
+    border: 2px solid var(--green);
+}
 
 
 /* ----------CONTACT---------- */
@@ -320,11 +323,6 @@ img{
    
 }
 
-
-
-
-
-
 .contact__card {
     height: 80px;
     align-items: center;
@@ -332,7 +330,12 @@ img{
     background-color: white;
     border-bottom: 2px solid var(--light-gray);
     padding: 12px;
+    
+}
 
+
+.contact__card:hover {
+    background-color: var(--light-gray);
 }
 
 .contact__card.active {
@@ -356,7 +359,7 @@ img{
 
 .contact__name p {
     font-weight: 500;
-    color: var(--medium-gray);
+    color: var(--dark-gray);
 }
 
 .contact__time {
@@ -365,7 +368,7 @@ img{
 
 .contact__time p {
     font-weight: 500;
-    color: var(--medium-gray);
+    color: var(--dark-gray);
     
 }
 
@@ -421,7 +424,7 @@ main {
 
 .chat__name p {
     font-weight: 500;
-    color: var(--medium-gray);
+    color: var(--dark-gray);
 }
 
 .chat__action {
@@ -450,11 +453,11 @@ main {
 
 /* --------main-body----------- */
 .main__body {
-    height: calc(100% - 160px);
+    height: calc(100% - 164px);
     background-image: url(../img/mine.jpg);
     overflow-y: auto;
-    
-    flex-grow: 1;
+    width: 100%;
+    display: inline-block;
    
 }
 
@@ -492,6 +495,7 @@ main {
 
 .main__body .received {
     background-color: white;
+    align-self: flex-start;
 }
 
 /* -----------main-action------------- */
@@ -499,7 +503,7 @@ main {
 
 .main__action {
     height: 80px;
-    
+    border-left: 1px solid var(--dark-gray);
     gap: 24px;
     background-color:var(--light-gray)
     

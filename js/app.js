@@ -193,14 +193,30 @@ const { createApp } = Vue
       sendNewMessage() {
         let newMessage = {
           message: this.inputMessage,
-          status: 'sent'
+          status: 'sent',
+          date: '20/03/2020 16:30:00',
         }
-        this.contacts.messages.push(newMessage);
+        this.contacts[this.currentChatIndex].messages.push(newMessage);
         this.inputMessage = '';
 
+        const answer = 'ok'
+        const answerOblect = {
+          message: answer,
+          status: 'received',
+          date: '20/03/2020 16:30:00',
+        }
+
+        setTimeout(() => {
+          this.contacts[this.currentChatIndex].messages.push(answerOblect);
+
+        }, 1000)
       }
     },
-    
+    computed: { //si utilizzano come proprietá che ci aiutano a calcolare delle proprieá e vengono scritte come funzioni
+      currentConctat() { //queste funzioni non accettano parametri perché non vvengono invocate
+        return this.contacts[this.currentChatIndex]
+      }
+    }
   }).mount('#app')
 
 

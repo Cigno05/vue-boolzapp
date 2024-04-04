@@ -192,9 +192,9 @@
 
 
             <ul class="flex flex-c">
-              <li v-for="(contactProp, i) in contacts[currentChatIndex].messages" class="col flex flex-c" :class="contactProp.status">
+              <li v-for="(contactProp, i) in currentConctat.messages" class="col flex flex-c" :class="contactProp.status">
                 <h3>{{ contactProp.message }}</h3>
-                <h5>{{ selectInToTheString(contactProp.date,11,16) }}</h5>
+                <h5>{{ contactProp.date.slice(11,16) }}</h5>
               </li>
 
 
@@ -239,7 +239,7 @@
 
               <div class="col-chat">
                 <div class="main__action-chat flex">
-                  <input @keyup.enter="sendNewMessage(0)" v-model.trim="inputMessage" type="text" placeholder="Scrivi un messaggio" class="main__action-bar">
+                  <input @keyup.enter="sendNewMessage()" v-model.trim="inputMessage" type="text" placeholder="Scrivi un messaggio" class="main__action-bar">
                 </div>
               </div>
               <div class="col">
