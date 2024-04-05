@@ -1,5 +1,6 @@
 console.log('JS funziona');
 
+
 const contacts = [
   {
   name: 'Michele',
@@ -163,8 +164,8 @@ const contacts = [
   ],
   }
   ]
-
-const { createApp } = Vue
+  
+ const { createApp } = Vue
 
   createApp({
     data() {
@@ -172,7 +173,17 @@ const { createApp } = Vue
         contacts: contacts,
         currentChatIndex: 0,
         inputMessage:'',
+        inputSearch:'',
+        contactsFilter: [],
         
+        
+      }
+    },
+    watch: {
+      inputSearch(newValue, oldValue) {
+        // console.log('now:', this.inputSearch)
+        // console.log('new:', newValue)
+        // console.log('old:', oldValue)
       }
     },
     methods: {
@@ -180,48 +191,65 @@ const { createApp } = Vue
         this.currentChatIndex = index
         console.log(index)
       },
-      selectInToTheString(string, start, end) {
-
-        const stringSelect = [];
-      
-        for (index = start; index < end; index++) {
-          const selected = string[index]
-          stringSelect.push(selected)
-        }
-        return stringSelect.join('')
-      },
-      sendNewMessage() {
-        let newMessage = {
-          message: this.inputMessage,
-          status: 'sent',
-          date: '20/03/2020 16:30:00',
-        }
-        this.contacts[this.currentChatIndex].messages.push(newMessage);
-        this.inputMessage = '';
-
-        const answer = 'ok'
-        const answerOblect = {
-          message: answer,
-          status: 'received',
-          date: '20/03/2020 16:30:00',
-        }
-
-        setTimeout(() => {
-          this.contacts[this.currentChatIndex].messages.push(answerOblect);
-
-        }, 1000)
+      // selectInToTheString(string, start, end) {
+        
+        //   const stringSelect = [];
+        
+        //   for (index = start; index < end; index++) {
+          //     const selected = string[index]
+          //     stringSelect.push(selected)
+          //   }
+          //   return stringSelect.join('')
+          // },
+          sendNewMessage() {
+            let newMessage = {
+              message: this.inputMessage,
+              status: 'sent',
+              date: '20/03/2020 16:30:00',
+            }
+            this.contacts[this.currentChatIndex].messages.push(newMessage);
+            this.inputMessage = '';
+            
+            const answer = 'ok'
+            const answerOblect = {
+              message: answer,
+              status: 'received',
+              date: '20/03/2020 16:30:00',
+            }
+            
+            setTimeout(() => {
+              this.contacts[this.currentChatIndex].messages.push(answerOblect);
+              
+            }, 1000)
+          },
+          findContact() {
+            // FILTRO
+            const filtered = this.contacts.filter(contact => {
+              return contact.name.toLowerCase().includes(this.inputSearch.toLowerCase()) === true;
+            })
+            //filtro contatti
+            this.contactsFilter = filtered;     
       }
     },
     computed: { //si utilizzano come proprietá che ci aiutano a calcolare delle proprieá e vengono scritte come funzioni
-      currentConctat() { //queste funzioni non accettano parametri perché non vvengono invocate
+      currentContact() { //queste funzioni non accettano parametri perché non vvengono invocate
         return this.contacts[this.currentChatIndex]
-      }
+      },
+
+      // contactsFilter() {
+      //   return this.conctats.filter(contact => contact.name.toLowerCase().includes(this.inputSearch.toLowerCase()))
+      // }
+      // tolgo contactsFilter vuoto nelle date
+      //tolgo il mounted
+
+    },
+    mounted() {
+      this.contactsFilter = this.contacts;
     }
   }).mount('#app')
 
 
 
-console.log()
 
 
 

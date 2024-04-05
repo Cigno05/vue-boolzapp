@@ -8,6 +8,7 @@
     --light-blue: #8EDAFC;
     --light-blue-filter: invert(76%) sepia(39%) saturate(560%) hue-rotate(169deg) brightness(101%) contrast(98%);
     --green: #009688;
+    --green-filter: invert(54%) sepia(77%) saturate(6265%) hue-rotate(154deg) brightness(93%) contrast(104%)
 }
 
 
@@ -136,9 +137,6 @@ img{
     margin: 0;
 }
 
-.container-lg {
-    border: 2px solid var(--green);
-}
 
 
 /* ----------CONTACT---------- */
@@ -192,6 +190,10 @@ img{
     cursor: pointer;
 }
 
+.menu:hover .menu-content {
+    display: flex;
+}
+
 .menu-content {
     display: none;
     position: absolute;
@@ -219,10 +221,10 @@ img{
 }
 
 .menu-btn:hover {
-    
-    filter: invert(54%) sepia(77%) saturate(6265%) hue-rotate(154deg) brightness(93%) contrast(104%);
-    
+    filter: var(--green-filter);
 }
+    
+    
 
 
 
@@ -330,6 +332,7 @@ img{
     background-color: white;
     border-bottom: 2px solid var(--light-gray);
     padding: 12px;
+    cursor: pointer;
     
 }
 
@@ -355,6 +358,10 @@ img{
 
 .contact__name h3 {
     font-weight: 1000;
+}
+
+.contact__name {
+    flex-grow: 1;
 }
 
 .contact__name p {
@@ -462,15 +469,30 @@ main {
 }
 
 .main__body ul {
-    padding: 5% 10%;
+    padding: 5% 5%;
+    
 }
 
 .main__body .col {
     max-width: 70%;
     padding: 12px 12px 6px 12px;
     border-radius: 12px;
+}
+  
+.main__body .message {
+    position: relative;
+}
     
-    
+.arrow-menu:hover .menu-content{
+    display: flex;
+}  
+
+.arrow-menu .menu-content {
+    top: 48px;
+}
+
+.sent .arrow-menu .menu-content{
+    right: 5px;
 }
 
 .sent + .sent,
@@ -482,10 +504,21 @@ main {
 .received + .sent {
     margin-top: 30px;
 }
+.main__body .col h3 {
+    margin-right: 12px;
+}
 
 .main__body .col h5 {
     text-align: right;
     color: var(--medium-gray);
+}
+.main__body .col .arrow-menu {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    text-align: right;
+    color: var(--medium-gray);
+    padding: 12px;
 }
 
 .main__body .sent {
@@ -543,7 +576,7 @@ main {
 
 .main__action-chat input {
     border: none;
-    color: var(--medium-gray);
+    color: black;
     width: 100%;
     padding: 0 12px;
     border-radius: 12px;
@@ -642,14 +675,14 @@ main {
         height: 90%;
         margin: 0 auto;
         margin-top: 5vh;
-        
+        border: 2px solid var(--green);
         
     
     }
 
-    .menu:hover .menu-content {
+    /* .menu:hover .menu-content {
         display: flex;
-    }
+    } */
 
     .contact__photo img {
    

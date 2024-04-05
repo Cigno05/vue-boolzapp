@@ -41,7 +41,6 @@
                       <div class="menu-content">
                         <a href="#">Aggiorna Stato</a>
                         <a href="#">Rimuovi</a>
-
                       </div>
                     </div>
                   </li>
@@ -90,25 +89,27 @@
           <div class="contact__body flex flex-c">
 
             <div class="contact__search flex flex-lg display-none">
-              <input type="text" name="search" placeholder="Cerca o inizia una nuova chat" />
+              <input v-model.trim="inputSearch" type="text" name="search" placeholder="Cerca o inizia una nuova chat"
+                @keyup="findContact" />
               <img src="./img/magnifying-glass-solid.svg" alt="">
             </div>
 
 
 
             <ul class="contact__list">
-              <li v-for="(contactsItem, i) in contacts" @click="viewCurrentChat(i)"
+              <li v-for="(contactsItem, i) in contactsFilter" @click="viewCurrentChat(i)"
                 :class="i === currentChatIndex ? 'active' : ''" class="contact__card flex">
-                <div class="contact__photo">
-                  <img :src="contactsItem.avatar" alt="">
-                </div>
-                <div class="contact__name flex-lg flex-c display-none">
-                  <div>
-                    <h3>{{ contactsItem.name }}</h3>
-                    <!-- <h3>{{ contactsItem[i].name }}</h3> -->
-                    <p>Lorem ipsum dolor sit amet.</p>
+                <!-- <div class="flex"> -->
+                  <div class="contact__photo">
+                    <img :src="contactsItem.avatar" alt="">
                   </div>
-                </div>
+                  <div class="contact__name flex-lg flex-c display-none">
+                    <div>
+                      <h3>{{ contactsItem.name }}</h3>
+                      <p>{{ contactsItem.messages.at(-1).message.slice(0,15) }} ...</p>
+                    </div>
+                  </div>
+                <!-- </div> -->
                 <div class="contact__time flex-lg display-none">
                   <p>16:23</p>
                 </div>
@@ -133,10 +134,10 @@
                   <div class="chat__photo">
                     <img :src="contactsItem.avatar" alt="">
                   </div>
-                  <div class="chat__name flex-c" >
+                  <div class="chat__name flex-c">
                     <div>
                       <h3>{{contactsItem.name}}</h3>
-                      <p >Ultimo accesso oggi alla 16:26</p>
+                      <p>Ultimo accesso oggi alla {{}}</p>
                     </div>
                   </div>
                 </div>
@@ -192,9 +193,18 @@
 
 
             <ul class="flex flex-c">
-              <li v-for="(contactProp, i) in currentConctat.messages" class="col flex flex-c" :class="contactProp.status">
+              <li v-for="(contactProp, i) in currentContact.messages" class="col flex flex-c message"
+                :class="contactProp.status">
+                <div class="arrow-menu">
+                  <a href=""><i class="fa-solid fa-angle-down"></i></a>
+                  <div class="menu-content">
+                    <a href="#">Elimina</a>
+                    
+                  </div>
+                </div>
                 <h3>{{ contactProp.message }}</h3>
                 <h5>{{ contactProp.date.slice(11,16) }}</h5>
+                
               </li>
 
 
@@ -239,7 +249,8 @@
 
               <div class="col-chat">
                 <div class="main__action-chat flex">
-                  <input @keyup.enter="sendNewMessage()" v-model.trim="inputMessage" type="text" placeholder="Scrivi un messaggio" class="main__action-bar">
+                  <input @keyup.enter="sendNewMessage()" v-model.trim="inputMessage" type="text"
+                    placeholder="Scrivi un messaggio" class="main__action-bar">
                 </div>
               </div>
               <div class="col">
