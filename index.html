@@ -111,7 +111,7 @@
                   </div>
                 <!-- </div> -->
                 <div class="contact__time flex-lg display-none">
-                  <p>16:23</p>
+                  <p>{{ contactsItem.messages.at(-1).date.slice(11, 16) }}</p>
                 </div>
               </li>
 
@@ -137,7 +137,7 @@
                   <div class="chat__name flex-c">
                     <div>
                       <h3>{{contactsItem.name}}</h3>
-                      <p>Ultimo accesso oggi alla {{}}</p>
+                      <p>Ultimo accesso oggi alle {{ contactsItem.messages.at(-1).date.slice(11, 16) }}</p>
                     </div>
                   </div>
                 </div>
@@ -197,8 +197,8 @@
                 :class="contactProp.status">
                 <div class="arrow-menu">
                   <a href=""><i class="fa-solid fa-angle-down"></i></a>
-                  <div class="menu-content">
-                    <a href="#">Elimina</a>
+                  <div class="menu-content" @click="eraseMessage(i)">
+                    <a>Elimina</a>
                     
                   </div>
                 </div>

@@ -485,6 +485,7 @@ main {
     
 .arrow-menu:hover .menu-content{
     display: flex;
+    cursor: pointer;
 }  
 
 .arrow-menu .menu-content {
