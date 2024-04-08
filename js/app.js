@@ -222,7 +222,14 @@ createApp({
       this.contactsFilter = filtered;
     },
     eraseMessage(messageIndex) {
-      this.currentContact.messages.splice(messageIndex,1)
+
+      if(this.currentContact.messages.length > 1){
+        this.currentContact.messages.splice(messageIndex,1)
+        console.log(this.currentContact)
+      } else {
+        this.contactsFilter.splice(this.currentContact)
+      }
+
     }
   },
   computed: { //si utilizzano come proprietá che ci aiutano a calcolare delle proprieá e vengono scritte come funzioni
